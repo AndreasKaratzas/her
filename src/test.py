@@ -36,7 +36,7 @@ def test(agent):
                 action = action_raw.detach().cpu().numpy().squeeze()
             
             # feed the action into the environment
-            next_observation, _, _, info = agent.test_env.step(action)
+            next_observation, reward, done, truncated, info = agent.test_env.step(action)
             
             # update cycle variables
             observation, desired_goal = _next_cycle_vars(next_observation, mode="test")

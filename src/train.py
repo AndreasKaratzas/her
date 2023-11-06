@@ -66,7 +66,7 @@ def train(agent: Agent):
                         action = agent.act(action_raw)
                     
                     # feed the action into the environment
-                    next_observation, _, _, info = agent.env.step(action)
+                    next_observation, reward, done, truncated, info = agent.env.step(action)
 
                     # append rollouts
                     epoch_vars.update(observation, achieved_goal, desired_goal, action)

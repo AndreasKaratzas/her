@@ -118,7 +118,7 @@ if __name__ == '__main__':
                 action = agent.online.actor(inputs)
             action = action.cpu().detach().numpy().squeeze()
             
-            next_observation, reward, _, info = env.step(action)
+            next_observation, reward, done, truncated, e_info = agent.env.step(action)
             observation = next_observation['observation']
             frame = agent.env.render(mode="human")
         
