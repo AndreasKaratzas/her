@@ -4,7 +4,7 @@ import argparse
 
 def arguments():
     """Example run:
-        >>> mpirun -np 1 python main.py --env='FetchReach-v1' --num-rollouts-per-mpi=2 --clip-return --device='cuda' --debug-mode --name='FetchReach-v1' --auto-save --info --logger-name='FetchReach-v1' --checkpoint-dir 'data/experiments' --batch-size=256
+        >>> mpirun -np 1 python main.py --env 'FetchReach-v1' --num-rollouts-per-mpi 2 --clip-return --device 'cuda' --debug-mode --name 'FetchReach-v1' --auto-save --info --logger-name 'FetchReach-v1' --checkpoint-dir 'data/experiments' --batch-size 256
 
 
     Returns
