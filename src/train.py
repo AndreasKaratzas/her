@@ -109,17 +109,17 @@ def train(agent: Agent):
             msg = metrics.compile(
                 epoch=epoch,
                 epochs=agent.epochs,
-                epoch_time=round(epoch_time.compute(), 3),
-                cycle_time=round(cycle_time.compute(), 3),
+                epoch_time=epoch_time.compute().numpy().round(3).item(),
+                cycle_time=cycle_time.compute().numpy().round(3).item(),
                 cuda_mem=round(torch.cuda.memory_reserved() / 1E6, 3) if agent.device.type == 'cuda' else 0, 
                 show_cuda=agent.device.type == 'cuda',
                 ram_util=psutil.virtual_memory().percent,
                 success=round(agent.success, 3), 
-                avg_q_val=round(agent.avg_q_val.compute(), 3), 
-                max_q_val=round(agent.max_q_val, 3),
-                min_q_val=round(agent.min_q_val, 3), 
-                loss_actor=round(agent.loss_actor.compute(), 3), 
-                loss_critic=round(agent.loss_critic.compute(), 3)
+                avg_q_val=agent.avg_q_val.compute().numpy().round(3).item(), 
+                max_q_val=agent.max_q_val.numpy().round(3).item(),
+                min_q_val=agent.min_q_val.numpy().round(3).item(), 
+                loss_actor=agent.loss_actor.compute().numpy().round(3).item(), 
+                loss_critic=agent.loss_critic.compute().numpy().round(3).item()
             )
     
             agent.logger.log_message(msg)

@@ -466,10 +466,10 @@ class Agent:
         print(
             f"Loaded checkpoint with:"
             f"\n\t * {self.success:7.3f} success rate"
-            f"\n\t * {self.avg_q_val.compute():7.3f} mean Q value"
+            f"\n\t * {self.avg_q_val.compute().numpy().round(3).item():7.3f} mean Q value"
             f"\n\t * {self.max_q_val:7.3f} maximum Q value achieved"
-            f"\n\t * {self.loss_actor.compute():7.3f} actor model loss"
-            f"\n\t * {self.loss_critic.compute():7.3f} critic model loss")
+            f"\n\t * {self.loss_actor.compute().numpy().round(3).item():7.3f} actor model loss"
+            f"\n\t * {self.loss_critic.compute().numpy().round(3).item():7.3f} critic model loss")
     
     def store(self):
 
@@ -495,8 +495,8 @@ class Agent:
                 'loss_critic': self.loss_critic
             }, os.path.join(
                 self.checkpoint_dir, 
-                f"epoch_{self.epoch:05d}-success_{self.success:07.3f}-" + f"avg_q_val_{self.avg_q_val.compute():07.3f}-" +
+                f"epoch_{self.epoch:05d}-success_{self.success:07.3f}-" + f"avg_q_val_{self.avg_q_val.compute().numpy().round(3).item():07.3f}-" +
                 f"max_q_val_{self.max_q_val:07.3f}-" + f"min_q_val{self.min_q_val:07.3f}-" +
-                f"loss_actor_{self.loss_actor.compute():07.3f}-" +
-                f"loss_critic_{self.loss_critic.compute():07.3f}.pth"
+                f"loss_actor_{self.loss_actor.compute().numpy().round(3).item():07.3f}-" +
+                f"loss_critic_{self.loss_critic.compute().numpy().round(3).item():07.3f}.pth"
             ))

@@ -129,7 +129,7 @@ if __name__ == '__main__':
             # log agent progress
             print(('%10s' + '%11s' + '%9s' + '%13s' + '%14.3g') % (
                 f'{episode + 1}/{agent.epochs}',
-                f'{epoch_time.compute()}',
+                f'{epoch_time.compute().numpy().round(3).item()}',
                 f'{round(torch.cuda.memory_reserved() / 1E9, 3) if torch.cuda.is_available() else 0:.3g} G',
                 f'{psutil.virtual_memory().percent} %',
                 round(agent.success, 3)))
