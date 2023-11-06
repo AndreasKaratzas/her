@@ -257,7 +257,7 @@ class Agent:
         if self.min_q_val > self.curr_q_val:
             self.min_q_val = self.curr_q_val
         
-        self.avg_q_val.update(self.curr_q_val)
+        self.avg_q_val.update(torch.tensor(self.curr_q_val))
     
     # this function will choose action for the agent and do the exploration
     def act(self, action):
@@ -329,8 +329,8 @@ class Agent:
         actor_loss += self.action_l2 * \
             (actions_real / self.act_limit).pow(2).mean()
         
-        self.loss_actor.update(actor_loss.cpu().detach().numpy())
-        self.loss_critic.update(critic_loss.cpu().detach().numpy())
+        self.loss_actor.update(torch.from_numpy(actor_loss.cpu().detach().numpy()))
+        self.loss_critic.update(torch.from_numpy(critic_loss.cpu().detach().numpy()))
         
         return actor_loss, critic_loss
     
@@ -383,8 +383,8 @@ class Agent:
         # preprocess observations and desired goals
         transitions['observations'], transitions['desired_goals'] = self.preprocess_obs_and_goal(observations, desired_goals)
         # update normalizers
-        self.obs_normalizer.update(transitions['observations'])
-        self.goal_normalizer.update(transitions['desired_goals'])
+        self.obs_normalizer.update(torch.from_numpy(transitions['observations']))
+        self.goal_normalizer.update(torch.from_numpy(transitions['desired_goals']))
         # recompute the stats
         self.obs_normalizer.recompute_stats()
         self.goal_normalizer.recompute_stats()

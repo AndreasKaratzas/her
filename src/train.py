@@ -93,7 +93,7 @@ def train(agent: Agent):
 
             if MPI.COMM_WORLD.Get_rank() == 0:
                 c_end = time.time()
-                cycle_time.update(c_end - c_start)
+                cycle_time.update(torch.tensor(c_end - c_start))
         
         # start the evaluation
         agent.success = test(agent=agent)
@@ -103,7 +103,7 @@ def train(agent: Agent):
             agent.store()
             
             ep_end = time.time()
-            epoch_time.update(ep_end - ep_start)
+            epoch_time.update(torch.tensor(ep_end - ep_start))
             
             # log agent progress
             msg = metrics.compile(

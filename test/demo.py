@@ -124,7 +124,7 @@ if __name__ == '__main__':
         
         if MPI.COMM_WORLD.Get_rank() == 0:
             ep_end = time.time()
-            epoch_time.update(ep_end - ep_start)
+            epoch_time.update(torch.tensor(ep_end - ep_start))
         
             # log agent progress
             print(('%10s' + '%11s' + '%9s' + '%13s' + '%14.3g') % (
