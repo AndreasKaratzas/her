@@ -52,7 +52,7 @@ def train(agent: Agent):
                 epoch_vars.reset()
                 
                 # reset the environment
-                observation = agent.env.reset(seed=agent.seed)
+                observation, info = agent.env.reset(seed=agent.seed)
                 
                 # initialize cycle variables
                 observation, achieved_goal, desired_goal = _cycle_vars(observation=observation, mode="train")

@@ -77,7 +77,7 @@ class Agent:
         if debug_mode:
             _seed(env=self.env, device=self.device, seed=seed)
 
-        dummy_step = self.env.reset(seed=seed)
+        dummy_step, _ = self.env.reset(seed=seed)
         # self.env.observation_space.shape
         self.obs_dim = dummy_step['observation'].shape[0]
         self.act_dim = self.env.action_space.shape[0]

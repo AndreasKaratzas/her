@@ -96,7 +96,7 @@ if __name__ == '__main__':
         if MPI.COMM_WORLD.Get_rank() == 0:
             ep_start = time.time()
 
-        observation = agent.env.reset(seed=agent.seed)
+        observation, e_info = agent.env.reset(seed=agent.seed)
         
         observation, goal = _cycle_vars(observation=observation, mode='test')
 

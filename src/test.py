@@ -22,7 +22,7 @@ def test(agent):
         is_success = []
 
         # reset the environment
-        observation = agent.test_env.reset(seed=agent.seed)
+        observation, info = agent.test_env.reset(seed=agent.seed)
 
         # initialize cycle variables
         observation, desired_goal = _cycle_vars(observation=observation, mode="test")
