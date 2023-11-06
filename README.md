@@ -41,8 +41,7 @@ mpirun -np 1 python main.py --env='FetchSlide-v1' --clip-return --device='cuda' 
 ```
 
 ### Demo
-```bash
-```
+
 
 ### Experiments
 
