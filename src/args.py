@@ -5,12 +5,6 @@ import argparse
 def arguments():
     """Example run:
         >>> mpirun -np 1 python main.py --env 'FetchReach-v1' --num-rollouts-per-mpi 2 --clip-return --device 'cuda' --debug-mode --name 'FetchReach-v1' --auto-save --info --logger-name 'FetchReach-v1' --checkpoint-dir 'data/experiments' --batch-size 256
-
-
-    Returns
-    -------
-    _type_
-        _description_
     """
     parser = argparse.ArgumentParser()
     # based on original implementation: https://github.com/openai/baselines/blob/ea25b9e8b234e6ee1bca43083f8f3cf974143998/baselines/her/experiment/config.py#L17
